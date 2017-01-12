@@ -1,0 +1,29 @@
+# Dependencies
+gems: [jekyll-paginate]
+
+# Markdown and syntax highlighting
+markdown: kramdown
+highlighter: rouge
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
+
+# Permalinks
+permalink: pretty
+
+# Setup
+
+# Site Settings
+title: "The IT Fox"
+tagline: "Inside a developer's mind"
+
+author:
+  name: "Quan To"
+
+paginate: 5
+
+recent_posts_limit: 10
+
+# Programming variables - do not modify
+array:            []
+is_custom_plugin_enabled: false

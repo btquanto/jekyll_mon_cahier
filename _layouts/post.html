@@ -1,0 +1,55 @@
+---
+layout: two-columns
+---
+<article class="hentry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="{{ page.url }}" title="{{ page.title }}" rel="bookmark">{{ page.title }}</a>
+    </h1>
+    <div class="entry-meta">
+      <p class="postedon">
+        <span class="posted-on">
+          <time class="entry-date published updated" datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
+        </span>
+        {% if page.categories.size > 0 %}
+        <span class="sep"> | </span>
+        <span class="cat-links">
+          Categories:
+          {% for category in page.categories %}
+          {% if site.is_custom_plugin_enabled == true %}
+          <a class="" href="/category/{{ category }}">{{ category }}</a>
+          {% else %}
+          <a class="" href="/categories/#{{ category }}">{{ category }}</a>
+          {% endif %}
+          {% unless forloop.last == true %}
+          , &nbsp;
+          {% endunless %}
+          {% endfor %}
+        </span>
+        {% endif %}
+      </p>
+    </div>
+  </header>
+  <div class="entry-content">
+    {{ page.content }}
+  </div>
+  {% if page.tags.size > 0 %}
+  <footer class="entry-meta">
+    <p>
+      <span class="cat-links">
+        Tags:
+        {% for tag in page.tags %}
+        {% if site.is_custom_plugin_enabled == true %}
+        <a class="" href="/tag/{{ tag }}">{{ tag }}</a>
+        {% else %}
+        <a class="" href="/tags/#{{ tag }}">{{ tag }}</a>
+        {% endif %}
+        {% unless forloop.last == true %}
+        , &nbsp;
+        {% endunless %}
+        {% endfor %}
+      </span>
+    </p>
+  </footer>
+  {% endif %}
+</article>

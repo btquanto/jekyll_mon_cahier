@@ -1,0 +1,55 @@
+---
+layout: two-columns
+title: Categories
+---
+
+{% assign raw_categories = site.array %}
+{% for post in site.posts %}
+{% for category in post.categories %}
+{% assign raw_categories = raw_categories | push: category %}
+{% endfor %}
+{% endfor %}
+{% assign raw_categories = raw_categories | sort %}
+{% assign categories = site.array %}
+{% for category in raw_categories %}
+{% unless category == previous_category %}
+{% assign categories = categories | push: category %}
+{% endunless %}
+{% assign previous_category = category %}
+{% endfor %}
+
+{% for category in categories %}
+<h1 id="{{category}}">{{category}}</h1>
+{% for post in site.posts %}
+{% for post_category in post.categories %}
+{% if category == post_category %}
+<article>
+  <header class="entry-header">
+    <h2 class="entry-title">
+      <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark" style="text-decoration: none;">{{ post.title }}</a>
+  </h2>
+
+  <div class="entry-meta">
+      <p class="postedon">
+        <span class="posted-on"><time class="entry-date published updated" datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></span></span>
+        {% if post.categories.size > 0 %}
+        <span class="sep"> | </span>
+        <span class="cat-links">
+          Categories:
+          {% for category in post.categories %}
+          <a href="/category/{{ category }}" rel="category tag">{{category}}</a>
+          {% unless forloop.last == true %}
+          , &nbsp;
+          {% endunless %}
+          {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+</div>
+</header>
+</article>
+{% endif %}
+{% endfor %}
+{% endfor %}
+<hr/>
+{% endfor %}
