@@ -1,0 +1,78 @@
+---
+layout: two-columns
+---
+<article class="hentry">
+  <header class="entry-header">
+    <h1 class="entry-title">
+      <a href="{{ page.url }}" title="{{ page.title }}" rel="bookmark">{{ page.title }}</a>
+    </h1>
+    <div class="entry-meta">
+      <p class="postedon">
+        <span class="posted-on">
+          <time class="entry-date published updated" datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>
+        </span>
+        {% if page.categories.size > 0 %}
+        <span class="sep"> | </span>
+        <span class="cat-links">
+          Categories:
+          {% for category in page.categories %}
+          {% if site.is_custom_plugin_enabled == true %}
+          <a class="" href="/category/{{ category }}">{{ category }}</a>
+          {% else %}
+          <a class="" href="/categories/#{{ category }}">{{ category }}</a>
+          {% endif %}
+          {% unless forloop.last == true %}
+          , &nbsp;
+          {% endunless %}
+          {% endfor %}
+        </span>
+        {% endif %}
+      </p>
+    </div>
+  </header>
+  <div class="entry-content">
+    {{ page.content }}
+  </div>
+  {% if page.tags.size > 0 %}
+  <div class="entry-meta">
+    <p>
+      <span class="cat-links">
+        Tags:
+        {% for tag in page.tags %}
+        {% if site.is_custom_plugin_enabled == true %}
+        <a class="" href="/tag/{{ tag }}">{{ tag }}</a>
+        {% else %}
+        <a class="" href="/tags/#{{ tag }}">{{ tag }}</a>
+        {% endif %}
+        {% unless forloop.last == true %}
+        , &nbsp;
+        {% endunless %}
+        {% endfor %}
+      </span>
+    </p>
+  </div>
+  {% endif %}
+  {% if page.comments %}
+  <div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//theitfox.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  {% endif %}
+</article>

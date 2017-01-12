@@ -1,0 +1,25 @@
+<header id="masthead">
+  <hgroup class="site-intro">
+    <h1 class="site-title">
+      <a href="/" title="{{ site.title }}" rel="home">{{ site.title }}</a>
+    </h1>
+    <h2 class="site-description">{{ site.tagline }}</h2>
+  </hgroup>
+  <nav role="navigation" class="site-navigation main-navigation">
+    <h1 class="assistive-text">Menu ☰</h1>
+    <div class="assistive-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+    <div class="menu">
+      <ul>
+        <li class="{% if page.url == node.url %}active{% endif %}"><a href="/">Home</a></li>
+        {% assign pages_list = site.pages %}
+        {% for node in pages_list %}
+        {% if node.title != null %}
+        {% if node.layout == "page" %}
+        <li class="{% if page.url == node.url %}active{% endif %}"><a href="{{ node.url }}">{{ node.title }}</a></li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</header>

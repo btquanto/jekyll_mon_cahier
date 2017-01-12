@@ -1,0 +1,30 @@
+---
+layout: two-columns
+---
+{% for post in site.posts %}
+<article>
+  <header class="entry-header">
+    <h2 class="entry-title">
+      <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark" style="text-decoration: none;">{{ post.title }}</a>
+  </h2>
+
+  <div class="entry-meta">
+      <p class="postedon">
+        <span class="posted-on"><time class="entry-date published updated" datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></span></span>
+        {% if post.categories.size > 0 %}
+        <span class="sep"> | </span>
+        <span class="cat-links">
+          Categories:
+          {% for category in post.categories %}
+          <a href="/category/{{ category }}" rel="category tag">{{category}}</a>
+          {% unless forloop.last == true %}
+          , &nbsp;
+          {% endunless %}
+          {% endfor %}
+        </span>
+        {% endif %}
+    </p>
+</div>
+</header>
+</article>
+{% endfor %}
