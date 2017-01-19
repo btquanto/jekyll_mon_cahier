@@ -29,14 +29,24 @@ Jekyll Mon Cahier provides a full Jekyll setup. There are some usage options:
 
 ## Using Jekyll server
 
-* Install Jekyll server (ruby is required)
+* Install ruby
+
     ```
-    gem install jekyll
+curl -L https://get.rvm.io | bash -s stable --ruby=2.0.0
     ```
+
+* Install Jekyll server
+
+    ```
+gem install jekyll
+    ```
+
 * Serve the site
+
     ```
-    jekyll serve
+jekyll serve
     ```
+
 * Open [localhost:4000](http://localhost:4000), and there it is
 
 ## Using docker
@@ -44,22 +54,27 @@ Jekyll Mon Cahier provides a full Jekyll setup. There are some usage options:
 * Install docker by following instructions on [Docker's website](https://docker.io/). Make sure all necessary gems are installed as well ()
 * Use docker to serve your site.
     I am using [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) docker image.
+
     ```
-    docker run -d --name jekyll \
-        -v `pwd`:/src \
-        -p 4000:4000 \
-        btquanto/docker-jekyll jekyll serve -H 0.0.0.0 --drafts
+docker run -d --name jekyll \
+    -v `pwd`:/src \
+    -p 4000:4000 \
+    btquanto/docker-jekyll jekyll serve -H 0.0.0.0 --drafts
     ```
+
     The [grahamc/jekyll](https://hub.docker.com/r/grahamc/jekyll/) works as well, but the image size is much bigger (816.4MB in comparison to 226.5MB).
+    
     ```
-    docker run -d --name jekyll \
-        -v `pwd`:/src \
-        -p 4000:4000 \
-        grahamc/jekyll serve -H 0.0.0.0 --drafts
+docker run -d --name jekyll \
+    -v `pwd`:/src \
+    -p 4000:4000 \
+    grahamc/jekyll serve -H 0.0.0.0 --drafts
     ```
+    
     I prepared a `docker-compose.yml` file, so you can also install and use `docker-compose`. It by default uses the [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) image
+    
     ```
-    docker-compose up -d
+docker-compose up -d
     ```
 
 # Options
@@ -69,12 +84,13 @@ Jekyll Mon Cahier provides a full Jekyll setup. There are some usage options:
 Place your posts inside `_posts` folder. The layout for posts is `post`.
 
 Example: The post **hello world**'s front matter
-```
+
+``` yaml
 ---
 layout: post
-title: "Hello world"
+title: Hello world
 is_recommended: true
-category: "Hello World"
+category: Hello World
 tags: ["welcome", "hello"]
 ---
 ```
@@ -86,7 +102,8 @@ Read more on [Jekyll's official documentation](https://jekyllrb.com/docs/posts/)
 Place your pages inside root folder.
 
 Example: The page **about**'s front matter
-```
+
+``` yaml
 ---
 layout: page
 title: About
@@ -102,33 +119,37 @@ Edit `_include/sidebar.html` to add more stuffs into the sidebar
 ## Categories
 
 Posts can be categorized into categories. Each post should only be in 1 category. The list of all categories is located on the side bar.
-```
+
+``` yaml
 ---
 layout: post
-title: "Hello world"
-category: "Hello World"
+title: Hello world
+category: Hello World
 ---
 ```
 
 ## Tags
 
 Posts can be tagged. A tag cloud that lists all tags is located on the sidebar
-```
+
+``` yaml
 ---
 layout: post
-title: "Hello world"
-category: "Hello World"
+title: Hello world
+category: Hello World
 tags: ["welcome", "hello"]
 ---
 ```
+
 ## Recommended posts
 Recommended posts will appear on the side bar. Add `is_recommended: true` into the post's front matter to mark it as recommended
-```
+
+``` yaml
 ---
 layout: post
-title: "Hello world"
+title: Hello world
 is_recommended: true
-category: "Hello World"
+category: Hello World
 tags: ["welcome", "hello"]
 ---
 ```
