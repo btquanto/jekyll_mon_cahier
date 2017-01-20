@@ -20,7 +20,7 @@ disqus_identifier: "EXAMPLE"
 # Site Info
 title: "Jekyll Mon Cahier"
 tagline: "Just another Jekyll site"
-url: https://theitfox.com/
+url: https://theitfox.com/ # Must end with `/`
 
 author:
   name: The IT Fox

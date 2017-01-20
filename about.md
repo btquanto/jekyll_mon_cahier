@@ -3,7 +3,7 @@ layout: page
 title: About
 keywords: about me, Jekyll Mon Cahier, Mon Cahier, Jekyll theme
 description: "Jekyll Mon Cahier is a nice, simple, yet feature-rich Jekyll theme..."
-comments: false
+comments: true
 ---
 # Jekyll Mon Cahier
 
