@@ -1,0 +1,53 @@
+body.custom-background {
+    background-image: url("\/public\/mon-cahier\/images\/grid.png");
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+a {
+    text-decoration: none;
+}
+
+div.entry-content a,
+div.page a {
+    text-decoration: underline;
+}
+
+div.entry-content img,
+div.page img {
+    max-width: 100%;
+}
+
+p {
+    margin-bottom: 0.5em;
+}
+
+div.highlighter-rouge {
+    margin: 5px 0;
+}
+
+.page-navigation {
+    font-size: 14px;
+    display: block;
+    width: auto;
+    overflow: hidden;
+}
+
+.page-navigation a {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 1em 0;
+}
+
+.page-navigation .prev {
+    text-align: left;
+    float: left;
+}
+
+.page-navigation .next {
+    text-align: right;
+    float: right;
+}
