@@ -257,7 +257,9 @@ Jekyll's templates are written with Liquid. If you know enough, feel free to edi
 
 ## Permalink
 
-The `permalink` setting in `_config.yml` is set to `/:year/:month/:day/:title.html`, which is different from Jekyll's default setting. The default setting is `/:category/:year/:month/:day/:title.html`, will cause Disqus comments loses when changing the post's category.
+The `permalink` setting in `_config.yml` is set to `/:year/:month/:day/:title:output_ext`, which is different from Jekyll's default setting. The default setting `/:category/:year/:month/:day/:title.html` will cause Disqus comments loses when changing the post's category.
+
+You may change `permalink` with care. The current setting will generate urls ending with `.html`, which some do not like. However, it ensures the page working well under many HTTP server without any further configuration.
 
 # Author
 
