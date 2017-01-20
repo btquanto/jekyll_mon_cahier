@@ -1,6 +1,9 @@
 ---
 layout: page
 title: About
+keywords: about me, Jekyll Mon Cahier, Mon Cahier, Jekyll theme
+description: "Jekyll Mon Cahier is a nice, simple, yet feature-rich Jekyll theme..."
+comments: false
 ---
 # Jekyll Mon Cahier
 
@@ -14,10 +17,14 @@ Jekyll Mon Cahier is a simple, clean, and elegant Jekyll theme, based on the [Mo
 * [Options](#options)
     * [Posts](#posts)
     * [Pages](#pages)
-    * [Sidebar](#sidebar)
+    * [Comments](#comments)
+    * [Recommended posts](#recommended-posts)
     * [Categories](#categories)
     * [Tags](#tags)
-    * [Recommended posts](#recommended-posts)
+    * [Keywords](#keywords)
+    * [Description](#description)
+    * [Sidebar](#sidebar)
+    * [Permalink](#permalink)
 * [Author](#author)
 * [License](#license)
 
@@ -33,14 +40,24 @@ Jekyll Mon Cahier provides a full Jekyll setup. There are some usage options:
 
 ## Using Jekyll server
 
-* Install Jekyll server (ruby is required)
+* Install ruby
+
     ```
-    gem install jekyll
+curl -L https://get.rvm.io | bash -s stable --ruby=2.0.0
     ```
+
+* Install Jekyll server
+
+    ```
+gem install jekyll
+    ```
+
 * Serve the site
+
     ```
-    jekyll serve
+jekyll serve
     ```
+
 * Open [localhost:4000](http://localhost:4000), and there it is
 
 ## Using docker
@@ -48,38 +65,74 @@ Jekyll Mon Cahier provides a full Jekyll setup. There are some usage options:
 * Install docker by following instructions on [Docker's website](https://docker.io/). Make sure all necessary gems are installed as well ()
 * Use docker to serve your site.
     I am using [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) docker image.
+
     ```
-    docker run -d --name jekyll \
-        -v `pwd`:/src \
-        -p 4000:4000 \
-        btquanto/docker-jekyll jekyll serve -H 0.0.0.0 --drafts
+docker run -d --name jekyll \
+    -v `pwd`:/src \
+    -p 4000:4000 \
+    btquanto/docker-jekyll jekyll serve -H 0.0.0.0 --drafts
     ```
+
     The [grahamc/jekyll](https://hub.docker.com/r/grahamc/jekyll/) works as well, but the image size is much bigger (816.4MB in comparison to 226.5MB).
+    
     ```
-    docker run -d --name jekyll \
-        -v `pwd`:/src \
-        -p 4000:4000 \
-        grahamc/jekyll serve -H 0.0.0.0 --drafts
+docker run -d --name jekyll \
+    -v `pwd`:/src \
+    -p 4000:4000 \
+    grahamc/jekyll serve -H 0.0.0.0 --drafts
     ```
+    
     I prepared a `docker-compose.yml` file, so you can also install and use `docker-compose`. It by default uses the [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) image
+    
     ```
-    docker-compose up -d
+docker-compose up -d
     ```
+* Some  commands to use with the created container:
+    * Start the container:
+
+        ```
+docker start jekyll
+        ```
+    
+    * Stop the container:
+
+        ```
+docker stop jekyll
+        ```
+
+    * Restart the container
+
+        ```
+docker restart jekyll
+        ```
 
 # Options
 
 ## Posts
 
-Place your posts inside `_posts` folder. The layout for posts is `post`.
+Place your posts inside `_posts` folder. The layout for posts is `post`. A basic post only needs two fields in the front matter, which are `layout`, and `title`.
 
-Example: The post **hello world**'s front matter
-```
+``` yaml
 ---
 layout: post
-title: "Hello world"
+title: Blogging is fun
+---
+```
+
+The layout for posts in **Jekyll Mon Cahier** is `post`. You can customize it or add your own in `_layouts` folder.
+
+There are other parameters for furthur customization. For example, this is the post **Welcome to Jekyll**'s front matter
+
+``` yaml
+---
+layout: post
+title: Welcome to Jekyll
 is_recommended: true
-category: "Hello World"
+category: Hello World
 tags: ["welcome", "hello"]
+keywords: jekyll, welcome to jekyll, blog, hello world, the it fox, getting started
+description: "Welcome to Jekyll! This is your first post. Edit or delete it, then start blogging!"
+comments: true
 ---
 ```
 
@@ -87,60 +140,129 @@ Read more on [Jekyll's official documentation](https://jekyllrb.com/docs/posts/)
 
 ## Pages
 
-Place your pages inside root folder.
+Place your pages inside your site's root folder. Similar to a post, a basic page only needs two attributes in the front matter: `layout`, and `title`.
 
-Example: The page **about**'s front matter
-```
+``` yaml
 ---
 layout: page
 title: About
 ---
 ```
 
+The layout for pages in **Jekyll Mon Cahier** is `page`. You can customize it or add your own in `_layouts` folder.
+
+There are other parameters for furthur customization. For example, this is the page **About**'s front matter
+
+``` yaml
+---
+layout: page
+title: About
+keywords: about me, Jekyll Mon Cahier, Mon Cahier, Jekyll theme
+description: "Jekyll Mon Cahier is a nice, simple, yet feature-rich Jekyll theme..."
+comments: false
+---
+```
+
 Read more on [Jekyll's official documentation](https://jekyllrb.com/docs/pages/)
 
-## Sidebar
+## Comments
 
-Edit `_include/sidebar.html` to add more stuffs into the sidebar
+Rendering comments can be enabled for **posts** and **pages**, by adding `comments: true` into the front matter.
+
+``` yaml
+comments: true
+```
+
+To disable comments on a post, or page, just set `comments` to `false`, or remove the field altogether.
+
+I am using [Disqus](https://disqus.com) to facilitate comments in my blog, thus you need to register a Disqus site in order to be able to moderate the comments on your site, then:
+
+* Edit `_config.yaml`.
+    * Change the field `disqus_identifier` to the value of your site's identifier.
+    * (Optional) Change the field `url` to the value of your site's static url.
+* Restart Jekyll (or the docker's container)
+
+That's it. Your posts are ready to be commented.
+
+## Recommended posts
+
+Recommended posts will appear on the side bar. Add `is_recommended: true` into the post's front matter to mark it as recommended.
+
+``` yaml
+is_recommended: true
+```
 
 ## Categories
 
-Posts can be categorized into categories. Each post should only be in 1 category. The list of all categories is located on the side bar.
+**Posts** can be categorized into categories. Each post should only be in 1 category. The list of all categories is located on the side bar. Clicking on a category would lead to a the list of all posts belonging to that category. On hosts that do not support custom plugins, like **Github Pages**, the list of all posts belonging to a category will look differently.
+
+``` yaml
+category: Hello World
 ```
----
-layout: post
-title: "Hello world"
-category: "Hello World"
----
+
+A post may belong to multiple categories, though I would prefer having only one category.
+
+``` yaml
+categories: ["Welcome", "Hello World"]
 ```
+
+Although Jekyll would actually treat this as a single `"Welcome/Hello World"` category, I find it mismatched with the param `categories`, and `category: ["Welcome", "Hello World"]` looks weird. Thus, I decided to implement this as multiple categories.
 
 ## Tags
 
-Posts can be tagged. A tag cloud that lists all tags is located on the sidebar
-```
----
-layout: post
-title: "Hello world"
-category: "Hello World"
+Posts can be tagged. A tag cloud that lists all tags is located on the sidebar. A post can have multiple tags. Tags behave in a manner that is very similar to category.
+
+``` yaml
 tags: ["welcome", "hello"]
----
 ```
-## Recommended posts
-Recommended posts will appear on the side bar. Add `is_recommended: true` into the post's front matter to mark it as recommended
+
+Tags, along with keywords and description, are important for search engine optimization
+
+## Keywords
+
+You can add keywords meta data to your **posts**/**pages**, using the parameter `keywords` in your front matter. Keywords are strings, separated by commas.
+
+``` yaml
+keywords: jekyll, welcome to jekyll, blog, hello world, the it fox, getting started
 ```
----
-layout: post
-title: "Hello world"
-is_recommended: true
-category: "Hello World"
-tags: ["welcome", "hello"]
----
+
+Keywords, along with tags and description, are important for search engine optimization
+
+## Description
+
+**Posts** and **pages** can have a short description. Descriptions, along with keywords and tags, are important for search engine optimization. It can also be used when editing your Jekyll template.
+
+``` yaml
+description: "Welcome to Jekyll! This is your first post. Edit or delete it, then start blogging!"
 ```
+
+## Sidebar
+
+Edit `_include/sidebar.html` to add more stuffs into the sidebar. A sidebar section looks something like this:
+
+``` html
+<aside class="widget">
+  <h1 class="widget-title"><a href="/recent/">Recent Posts</a></h1>
+  <ul>
+    {% raw %}{% for post in site.posts limit:site.recent_posts_limit %}{% endraw %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% raw %}{% endfor %}{% endraw %}
+  </ul>
+</aside>
+```
+
+Jekyll's templates are written with Liquid. If you know enough, feel free to edit as you want.
+
+## Permalink
+
+The `permalink` setting in `_config.yml` is set to `/:year/:month/:day/:title.html`, which is different from Jekyll's default setting. The default setting is `/:category/:year/:month/:day/:title.html`, will cause Disqus comments loses when changing the post's category.
 
 # Author
 
 * [https://github.com/btquanto](https://github.com/btquanto)
-* [http://btquanto.github.io](http://btquanto.github.io)
+* [https://theitfox.com](https://theitfox.com)
 * [https://fb.me/theitfox](https://fb.me/theitfox)
 
 # License
