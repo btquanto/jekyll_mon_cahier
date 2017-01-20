@@ -269,4 +269,4 @@ You may change `permalink` with care. The current setting will generate urls end
 
 # License
 
-This project inherits the GNU GPL v2.0 license from the [Mon Cahier wordpress theme](https://wordpress.org/themes/mon-cahier/)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
