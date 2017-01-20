@@ -1,29 +1,30 @@
 # Dependencies
 gems: [jekyll-paginate]
 
-# Markdown and syntax highlighting
+# Site Settings
 markdown: kramdown
+
 highlighter: rouge
+
 kramdown:
     input: GFM
     syntax_highlighter: rouge
 
-# Permalinks
 permalink: /:year/:month/:day/:title.html
-
-# Setup
-
-# Site Settings
-title: "The IT Fox"
-tagline: "Inside a developer's mind"
-
-author:
-  name: "Quan To"
-
 paginate: 5
-
 recent_posts_limit: 10
 
+# Disqus
+disqus_identifier: "EXAMPLE"
+
+# Site Info
+title: "Jekyll Mon Cahier"
+tagline: "Just another Jekyll site"
+url: https://theitfox.com/
+
+author:
+  name: The IT Fox
+
 # Programming variables - do not modify
-array:            []
+array: []
 is_custom_plugin_enabled: false
