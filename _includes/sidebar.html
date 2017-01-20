@@ -33,9 +33,9 @@
     <li>
       {% for tag in site.tags %}
       {% if site.is_custom_plugin_enabled == true %}
-      <a class="" href="/tag/{{ tag[0] }}">{{ tag[0] }}</a>
+      <a class="" href="/tag/{{ tag[0] | downcase | replace: " ", "-" }}">{{ tag[0] | downcase | replace: " ", "-" }}</a>
       {% else %}
-      <a class="" href="/tags/#{{ tag[0] }}">{{ tag[0] }}</a>
+      <a class="" href="/tags/#{{ tag[0] | downcase | replace: " ", "-" }}">{{ tag[0] | downcase | replace: " ", "-" }}</a>
       {% endif %}
       {% unless forloop.last == true %}
       , &nbsp;
