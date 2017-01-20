@@ -16,9 +16,9 @@
     {% for category in site.categories %}
     <li>
       {% if site.is_custom_plugin_enabled == true %}
-      <a class="" href="/category/{{ category[0] }}">{{ category[0] }}</a>
+      <a class="" href="/category/{{ category[0] | downcase | replace: " ", "-" }}">{{ category[0] }}</a>
       {% else %}
-      <a class="" href="/categories/#{{ category[0] }}">{{ category[0] }}</a>
+      <a class="" href="/categories/#{{ category[0] | downcase | replace: " ", "-" }}">{{ category[0] }}</a>
       {% endif %}
     </li>
     {% endfor %}

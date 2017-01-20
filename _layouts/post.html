@@ -17,9 +17,9 @@ layout: two-columns
           Categories:
           {% for category in page.categories %}
           {% if site.is_custom_plugin_enabled == true %}
-          <a class="" href="/category/{{ category }}">{{ category }}</a>
+          <a class="" href="/category/{{ category | downcase | replace: " ", "-" }}">{{ category }}</a>
           {% else %}
-          <a class="" href="/categories/#{{ category }}">{{ category }}</a>
+          <a class="" href="/categories/#{{ category | downcase | replace: " ", "-" }}">{{ category }}</a>
           {% endif %}
           {% unless forloop.last == true %}
           , &nbsp;

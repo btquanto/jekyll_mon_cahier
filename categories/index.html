@@ -19,7 +19,7 @@ title: Categories
 {% endfor %}
 
 {% for category in categories %}
-<h1 id="{{category}}">{{category}}</h1>
+<h1 id="{{ category | downcase | replace: " ", "-" }}">{{category}}</h1>
 {% for post in site.posts %}
 {% for post_category in post.categories %}
 {% if category == post_category %}
@@ -37,7 +37,7 @@ title: Categories
         <span class="cat-links">
           Categories:
           {% for category in post.categories %}
-          <a href="/category/{{ category }}" rel="category tag">{{category}}</a>
+          <a href="/category/{{ category | downcase | replace: " ", "-" }}" rel="category tag">{{category}}</a>
           {% unless forloop.last == true %}
           , &nbsp;
           {% endunless %}
