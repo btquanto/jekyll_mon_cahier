@@ -2,23 +2,8 @@
 layout: two-columns
 title: Categories
 ---
-
-{% assign raw_categories = site.array %}
-{% for post in site.posts %}
-{% for category in post.categories %}
-{% assign raw_categories = raw_categories | push: category %}
-{% endfor %}
-{% endfor %}
-{% assign raw_categories = raw_categories | sort %}
-{% assign categories = site.array %}
-{% for category in raw_categories %}
-{% unless category == previous_category %}
-{% assign categories = categories | push: category %}
-{% endunless %}
-{% assign previous_category = category %}
-{% endfor %}
-
-{% for category in categories %}
+{% for site_category in site.categories %}
+{% assign category = site_category[0] %}
 <h1 id="{{ category | downcase | replace: " ", "-" }}">{{category}}</h1>
 {% for post in site.posts %}
 {% for post_category in post.categories %}
