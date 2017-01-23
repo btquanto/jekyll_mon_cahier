@@ -11,8 +11,11 @@ kramdown:
     syntax_highlighter: rouge
 
 permalink: /:year/:month/:day/:title:output_ext
+
 paginate: 5
 recent_posts_limit: 10
+
+show_drafts: false
 
 # Disqus
 disqus_identifier: "EXAMPLE"
@@ -23,7 +26,26 @@ tagline: "Just another Jekyll site"
 url: https://theitfox.com/ # Must end with `/`
 
 author:
-  name: The IT Fox
+  name: Quan To
+  
+# Defaults
+
+defaults:
+  - 
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      is_recommended: false
+      comments: true
+  - 
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+      comments: false
 
 # Programming variables - do not modify
 array: []
