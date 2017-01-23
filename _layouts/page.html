@@ -3,7 +3,9 @@ layout: two-columns
 ---
 <div class="page">
     <h1 class="page-title">{{ page.title }}</h1>
+    <div class="entry-content {{ page.style }}">
     {{ content }}
+    </div>
     {% if page.comments %}
     <div>
       <div id="disqus_thread"></div>
