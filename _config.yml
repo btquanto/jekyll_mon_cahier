@@ -27,11 +27,11 @@ url: https://theitfox.com/ # Must end with `/`
 
 author:
   name: Quan To
-  
+
 # Defaults
 
 defaults:
-  - 
+  -
     scope:
       path: ""
       type: posts
@@ -39,8 +39,8 @@ defaults:
       layout: post
       is_recommended: false
       comments: true
-      style: technical
-  - 
+      style: casual # Styles can be casual or technical
+  -
     scope:
       path: ""
       type: pages

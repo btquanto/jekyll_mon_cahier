@@ -1,6 +1,6 @@
 # Jekyll Mon Cahier
 
-Jekyll Mon Cahier is a simple, clean, and elegant Jekyll theme, based on the [Mon Cahier wordpress theme](https://wordpress.org/themes/mon-cahier/) by [Christine Rondeau](https://wordpress.org/themes/author/crondeau/)
+Jekyll Mon Cahier is a simple, clean, and elegant Jekyll theme, based on the [Mon Cahier wordpress theme](https://wordpress.org/themes/mon-cahier/) by [Christine Rondeau](https://wordpress.org/themes/author/crondeau/).
 
 ![Jekyll Mon Cahier](/public/images/jekyll-mon-cahier.png)
 
@@ -18,6 +18,7 @@ Jekyll Mon Cahier is a simple, clean, and elegant Jekyll theme, based on the [Mo
     * [Description](#description)
     * [Sidebar](#sidebar)
     * [Permalink](#permalink)
+    * [Styles](#styles)
 * [Author](#author)
 * [License](#license)
 
@@ -67,16 +68,16 @@ docker run -d --name jekyll \
     ```
 
     The [grahamc/jekyll](https://hub.docker.com/r/grahamc/jekyll/) works as well, but the image size is much bigger (816.4MB in comparison to 226.5MB).
-    
+
     ```
 docker run -d --name jekyll \
     -v `pwd`:/src \
     -p 4000:4000 \
     grahamc/jekyll serve -H 0.0.0.0 --drafts
     ```
-    
+
     I prepared a `docker-compose.yml` file, so you can also install and use `docker-compose`. It by default uses the [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) image
-    
+
     ```
 docker-compose up -d
     ```
@@ -86,7 +87,7 @@ docker-compose up -d
         ```
 docker start jekyll
         ```
-    
+
     * Stop the container:
 
         ```
@@ -103,18 +104,17 @@ docker restart jekyll
 
 ## Posts
 
-Place your posts inside `_posts` folder. The layout for posts is `post`. A basic post only needs two fields in the front matter, which are `layout`, and `title`.
+Place your posts inside `_posts` folder. A basic post only needs `title` specified in the front matter.
 
 ``` yaml
 ---
-layout: post
 title: Blogging is fun
 ---
 ```
 
-The layout for posts in **Jekyll Mon Cahier** is `post`. You can customize it or add your own in `_layouts` folder.
+The default layout for posts in **Jekyll Mon Cahier** is `post`. You can customize it or add your own in `_layouts` folder.
 
-There are other parameters for furthur customization. For example, this is the post **Welcome to Jekyll**'s front matter
+There are other parameters for furthur customization. For example:
 
 ``` yaml
 ---
@@ -125,7 +125,7 @@ category: Hello World
 tags: ["welcome", "hello"]
 keywords: jekyll, welcome to jekyll, blog, hello world, the it fox, getting started
 description: "Welcome to Jekyll! This is your first post. Edit or delete it, then start blogging!"
-comments: true
+comments: false
 ---
 ```
 
@@ -133,18 +133,17 @@ Read more on [Jekyll's official documentation](https://jekyllrb.com/docs/posts/)
 
 ## Pages
 
-Place your pages inside your site's root folder. Similar to a post, a basic page only needs two attributes in the front matter: `layout`, and `title`.
+Place your pages inside your site's root folder. Similar to a post, a basic page only needs `title` in its yaml front matter.
 
 ``` yaml
 ---
-layout: page
 title: About
 ---
 ```
 
-The layout for pages in **Jekyll Mon Cahier** is `page`. You can customize it or add your own in `_layouts` folder.
+The default layout for pages in **Jekyll Mon Cahier** is `page`. You can customize it or add your own in `_layouts` folder.
 
-There are other parameters for furthur customization. For example, this is the page **About**'s front matter
+There are other parameters for furthur customization. For example:
 
 ``` yaml
 ---
@@ -160,15 +159,13 @@ Read more on [Jekyll's official documentation](https://jekyllrb.com/docs/pages/)
 
 ## Comments
 
-Rendering comments can be enabled for **posts** and **pages**, by adding `comments: true` into the front matter.
+Comments are enabled by default for posts, and disabled by default for pages. Rendering comments can be enabled, or disabled, by adding `comments: true` or `comments: false` into the yaml front matter of the post or page.
 
 ``` yaml
 comments: true
 ```
 
-To disable comments on a post, or page, just set `comments` to `false`, or remove the field altogether.
-
-I am using [Disqus](https://disqus.com) to facilitate comments in my blog, thus you need to register a Disqus site in order to be able to moderate the comments on your site, then:
+I am using [Disqus](https://disqus.com) to facilitate comments in this theme, thus you need to register a Disqus site in order to be able to moderate the comments on your site, then follow these instructions:
 
 * Edit `_config.yaml`.
     * Change the field `disqus_identifier` to the value of your site's identifier.
@@ -253,6 +250,16 @@ Jekyll's templates are written with Liquid. If you know enough, feel free to edi
 The `permalink` setting in `_config.yml` is set to `/:year/:month/:day/:title:output_ext`, which is different from Jekyll's default setting. The default setting `/:category/:year/:month/:day/:title.html` will cause Disqus comments loses when changing the post's category.
 
 You may change `permalink` with care. The current setting will generate urls ending with `.html`, which some do not like. However, it ensures the page working well under many HTTP server without any further configuration.
+
+## Style
+
+Pages and posts can have a style setting. Styles enabled different css rules for some elements in your blog post. Style setting is meant for advanced users, who may have different css rules for some blog posts, by writing their own css.
+
+``` yaml
+style: technical
+```
+
+The default style is set to `casual`, which adhere to the default visual look of the original wordpress theme **Mon Cahier**. There is also a `technical` style, whose only differences are the `font-family` and `font-size` of the `<quotation/>` tag.
 
 # Author
 
