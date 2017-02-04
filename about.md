@@ -44,67 +44,68 @@ Jekyll Mon Cahier provides a full Jekyll setup. There are some usage options:
 * Install ruby
 
     ```
-curl -L https://get.rvm.io | bash -s stable --ruby=2.0.0
+    curl -L https://get.rvm.io | bash -s stable --ruby=2.0.0
     ```
 
 * Install Jekyll server
 
     ```
-gem install jekyll
+    gem install jekyll
     ```
 
 * Serve the site
 
     ```
-jekyll serve
+    jekyll serve
     ```
 
 * Open [localhost:4000](http://localhost:4000), and there it is
 
 ## Using docker
 
-* Install docker by following instructions on [Docker's website](https://docker.io/). Make sure all necessary gems are installed as well ()
+* Install docker by following instructions on [Docker's website](https://docker.io/). Make sure all necessary gems are installed as well.
 * Use docker to serve your site.
     I am using [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) docker image.
 
     ```
-docker run -d --name jekyll \
-    -v `pwd`:/src \
-    -p 4000:4000 \
-    btquanto/docker-jekyll jekyll serve -H 0.0.0.0 --drafts
+    docker run -d --name jekyll \
+        -v `pwd`:/src \
+        -p 4000:4000 \
+        btquanto/docker-jekyll jekyll serve -H 0.0.0.0 --drafts
     ```
 
     The [grahamc/jekyll](https://hub.docker.com/r/grahamc/jekyll/) works as well, but the image size is much bigger (816.4MB in comparison to 226.5MB).
 
     ```
-docker run -d --name jekyll \
-    -v `pwd`:/src \
-    -p 4000:4000 \
-    grahamc/jekyll serve -H 0.0.0.0 --drafts
+    docker run -d --name jekyll \
+        -v `pwd`:/src \
+        -p 4000:4000 \
+        grahamc/jekyll serve -H 0.0.0.0 --drafts
     ```
 
-    I prepared a `docker-compose.yml` file, so you can also install and use `docker-compose`. It by default uses the [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) image
+    I prepared a `docker-compose.yml` file, so you can also install and use `docker-compose`. It by default uses the [btquanto/docker-jekyll](https://hub.docker.com/r/btquanto/docker-jekyll/) image. Follow instructions on [docker-compose release page](https://github.com/docker/compose/releases) to install the latest version. Do not use `apt-get` to install docker-compose.
 
     ```
-docker-compose up -d
+    docker-compose up -d
     ```
+
 * Some  commands to use with the created container:
     * Start the container:
 
         ```
-docker start jekyll
+        docker start jekyll
         ```
 
     * Stop the container:
 
         ```
-docker stop jekyll
+        docker stop jekyll
         ```
 
     * Restart the container
 
         ```
-docker restart jekyll
+        docker restart jekyll
         ```
 
 # Options
@@ -121,7 +122,7 @@ title: Blogging is fun
 
 The default layout for posts in **Jekyll Mon Cahier** is `post`. You can customize it or add your own in `_layouts` folder.
 
-There are other parameters for furthur customization. For example:
+There are other parameters for further customization. For example:
 
 ``` yaml
 ---
